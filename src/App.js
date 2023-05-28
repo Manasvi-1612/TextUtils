@@ -21,7 +21,7 @@ function App() {
   const showAlert = (message,type)=>{
     setAlert({
       msg: message,
-      type: type
+      type: type==="light"?"dark":"light"
     })
 
     setTimeout(() => {
@@ -29,30 +29,20 @@ function App() {
     }, 1500);
   }
 
-  const removeClasses = () =>{
-    document.body.classList.remove('bg-light')
-    document.body.classList.remove('bg-dark')
-    document.body.classList.remove('bg-success')
-    document.body.classList.remove('bg-primary')
-    document.body.classList.remove('bg-warning')
-    document.body.classList.remove('bg-danger')
-  }
-  const toggleMode = (cls)=>{
-    
-    removeClasses();
+  
 
-    document.body.classList.add('bg-'+cls);
-    
+  const toggleMode = ()=>{
+   
     if(mode === "light"){
       setMode("dark");
       document.body.style.backgroundColor="#042743";
-      showAlert(" mode has been enabled",cls)
+      showAlert("mode has been enabled","dark")
       document.title = "TextUtils - Dark Mode"
     }
     else{
       setMode("light");
       document.body.style.backgroundColor="white";
-      showAlert(" mode has been enabled",cls)
+      showAlert("mode has been enabled","light")
       document.title = "TextUtils - Light Mode"
     }
   }
